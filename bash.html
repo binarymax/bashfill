@@ -1,0 +1,101 @@
+<!DOCTYPE HTML">
+<html>
+<head>
+<title>bashful &gt; art for your terminal</title>
+<meta name="author" content="Max Irwin">
+<meta name="date" content="2013-08-17T12:46:15+0100" >
+<meta name="copyright" content="Copyright 2013, Max Irwin">
+<meta name="keywords" content="Bashful">
+<meta name="description" content="Bash Image Generator">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style type="text/css">
+body { font-family: monospace; color:#300A24; }
+h1,h2 {display:inline-block;font-size:2em; margin-bottom:0px;}
+.section { clear:both; padding-top:20px; width:800px;}
+#drawing { border:1px solid #D3D7CF; padding:0px; border-spacing:0; border-collapse:collapse; float:left; }
+#drawing td { margin:0px; padding:0px; cursor: crosshair; font-size:14px;}
+#palette { width:24px; list-style: none; float:left; margin:0px; padding:0px;}
+#clear   { margin-left:10px; font-size:14px;}
+.swatch  { width:24px; margin:10px; border:1px solid #300A24; font-size:24px; cursor:pointer; }
+.active > .swatch { border:1px solid #D3D7CF; }
+.x {background-color:#300A24; color:#D3D7CF; }
+.r {background-color:#CC0000;} .rf {color:#CC0000;}
+.g {background-color:#4E9A06;} .gf {color:#4E9A06;}
+.y {background-color:#C4A000;} .yf {color:#C4A000;}
+.b {background-color:#3465A4;} .bf {color:#3465A4;}
+.m {background-color:#75507B;} .mf {color:#75507B;}
+.c {background-color:#06989A;} .cf {color:#06989A;}
+.w {background-color:#D3D7CF;} .wf {color:#D3D7CF;}
+#source {clear:both; width:640px; font-size:12px;border:1px solid #333;}
+#output {white-space: normal; }
+</style>
+
+
+</head>
+<body>
+
+<h1 class=cf>bashful</h1><h1 class=rf>@</h1><h1 class=gf>MAX.IO</h1><h1 class=yf>&gt;</h1><h2>art for your terminal</h2>
+
+<div class="section">
+<h3>&gt;draw here</h3>
+<table id="drawing"></table>
+<ul id="palette">
+<li data-swatch="x"><div class="swatch x">&nbsp;&nbsp;</div></li>
+<li data-swatch="r"><div class="swatch r">&nbsp;&nbsp;</div></li>
+<li data-swatch="g"><div class="swatch g">&nbsp;&nbsp;</div></li>
+<li data-swatch="y"><div class="swatch y">&nbsp;&nbsp;</div></li>
+<li data-swatch="b"><div class="swatch b">&nbsp;&nbsp;</div></li>
+<li data-swatch="m"><div class="swatch m">&nbsp;&nbsp;</div></li>
+<li data-swatch="c"><div class="swatch c">&nbsp;&nbsp;</div></li>
+<li data-swatch="w"><div class="swatch w">&nbsp;&nbsp;</div></li>
+<li><a href="#" id="clear">&gt;rm</a></li>
+</ul>
+</div>
+
+<div class="section">
+<h3>&gt;copy this script</h3>
+<pre id="source" class="x">
+#!/bin/bash
+#Background Colors
+E=$(tput sgr0);    R=$(tput setab 1); G=$(tput setab 2); Y=$(tput setab 3);
+B=$(tput setab 4); M=$(tput setab 5); C=$(tput setab 6); W=$(tput setab 7);
+function e() { echo -e "$E"; }
+function x() { echo -n "$E  "; }
+function r() { echo -n "$R  "; }
+function g() { echo -n "$G  "; }
+function y() { echo -n "$Y  "; }
+function b() { echo -n "$B  "; }
+function m() { echo -n "$M  "; }
+function c() { echo -n "$C  "; }
+function w() { echo -n "$W  "; }
+
+#putpixels
+function u() { 
+    h="$*";o=${h:0:1};v=${h:1}; 
+    for i in `seq $v` 
+    do 
+        $o;
+    done 
+}
+
+img="\
+<div id="output"></div>
+for n in $img
+do
+    u $n
+done
+e;
+exit 0;
+</pre>
+</div>
+
+<div class="section">
+<h3>&gt;share your talent</h3>
+<a href="#" id="link">Link to this drawing</a>
+</div>
+
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bash.js"></script>
+</body>
+</html>
