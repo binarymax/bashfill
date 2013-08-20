@@ -20,7 +20,7 @@ var bash=(function(){
 		var exe = rqs.exec(location.href);
 		var pic = [];
 		if (exe && exe.length>1 && window.atob) {
-			var zip = exe[1];			
+			var zip = decodeURIComponent(exe[1]);
 			var tmp = [];
 			try { 
 				zip = atob(zip);
